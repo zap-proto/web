@@ -4,14 +4,14 @@
 /**
  * errors.ts — error surface for the web RPC layer.
  *
- * Method/wire-level decode failures keep using @hanzo/zap's ZapParseError (the
+ * Method/wire-level decode failures keep using @zap-proto/zap's ZapParseError (the
  * runtime throws it on a bad magic/version/size); we re-export it so consumers
  * have one import site. WebRpcError is new: it covers transport-level failures
  * that only exist at the WebSocket boundary — a rejected upgrade, a socket that
  * closes mid-call, or a non-OK RPC status surfaced to the caller.
  */
 
-export { ZapParseError } from "@hanzo/zap";
+export { ZapParseError } from "@zap-proto/zap";
 
 /**
  * WebRpcError is raised for WebSocket-transport-level failures: the upgrade was

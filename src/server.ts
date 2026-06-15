@@ -32,7 +32,7 @@ import type { MintCap } from "./auth.js";
 /**
  * rootCap produces the per-connection dispatch root for a minted ctx.
  *
- * On the real @hanzo/zap foundation a "service" is a dispatcher over decoded
+ * On the real @zap-proto/zap foundation a "service" is a dispatcher over decoded
  * Calls (method ordinal + payload), not a Cap'n Proto Server object — so the
  * bootstrap capability is modelled here as a {@link CallHandler}. Generated
  * zapgen bindings give you the typed param/result views to decode the payload

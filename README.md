@@ -1,18 +1,18 @@
-# @hanzo/zap-web
+# @zap-proto/web
 
 Browser-frontend RPC over **ZAP** — a drop-in tRPC replacement for Next.js /
 Remix / SvelteKit. Native ZAP envelopes over WebSocket binary frames, layered
-cleanly on [`@hanzo/zap`](https://github.com/zap-proto/ts) (the ZAP wire
+cleanly on [`@zap-proto/zap`](https://github.com/zap-proto/ts) (the ZAP wire
 runtime). `v0.1.0` — pre-1.0 by policy; no version tags until the full chain
 works end-to-end.
 
-> **Note on naming.** The foundation runtime is `@hanzo/zap` (the canonical
+> **Note on naming.** The foundation runtime is `@zap-proto/zap` (the canonical
 > TypeScript ZAP runtime, repo `zap-proto/ts`). This package — the WebSocket
-> frontend layer — is `@hanzo/zap-web`, repo `zap-proto/web`. It is **not**
+> frontend layer — is `@zap-proto/web`, repo `zap-proto/web`. It is **not**
 > Cap'n Proto; ZAP is a zero-copy, zero-dependency binary format byte-compatible
 > with the Go runtime `github.com/zap-proto/go` and `github.com/luxfi/zap`.
 
-## What @hanzo/zap-web IS
+## What @zap-proto/web IS
 
 - A **drop-in replacement for tRPC** across Hanzo's TS apps (esign, console,
   platform), using native ZAP RPC over WebSocket instead of JSON-over-HTTP.
@@ -26,7 +26,7 @@ works end-to-end.
 - A **`mintCap` boundary hook** at the WS upgrade so apps plug their own
   bearer→context minting logic.
 
-## What @hanzo/zap-web is NOT
+## What @zap-proto/web is NOT
 
 - ❌ **Not a Zod/procedure DSL** like tRPC. Service shape comes from `.zap`
   schemas (`struct`s + method ordinals), codegen'd via
@@ -48,12 +48,14 @@ works end-to-end.
 ## Install
 
 ```sh
-pnpm i @hanzo/zap-web @hanzo/zap
+pnpm i @zap-proto/web @zap-proto/zap
 ```
 
-> `@hanzo/zap` is not yet published to npm. Until it is, this package links to
-> the sibling source tree (`../zap-ts`) — see `package.json` (`link:../zap-ts`)
-> and `vitest.config.ts`. Flip both to plain npm semver once `@hanzo/zap` ships.
+> `@zap-proto/zap` is not yet published to npm. The `dependencies` entry already
+> ships plain semver (`^0.1.0`); until it lands on npm, local tests resolve the
+> specifier to the sibling source tree (`../ts`, the `zap-proto/ts` repo) via the
+> `vitest.config.ts` alias and the `tsconfig.json` path. No change needed once
+> `@zap-proto/zap` ships — just drop the alias.
 
 ## Quick start — Next.js (≈30 lines)
 
@@ -61,7 +63,7 @@ pnpm i @hanzo/zap-web @hanzo/zap
 // server.ts
 import http from "node:http";
 import next from "next";
-import { serve } from "@hanzo/zap-web/server";
+import { serve } from "@zap-proto/web/server";
 import { newGreeting, HelloArgs } from "./gen/hello_zap.js"; // zapgen --target=ts
 
 const app = next({ dev: process.env.NODE_ENV !== "production" });
@@ -93,7 +95,7 @@ server.listen(3000);
 
 ```ts
 // client.ts (browser)
-import { connect } from "@hanzo/zap-web/client";
+import { connect } from "@zap-proto/web/client";
 import { newHelloArgs, Greeting } from "./gen/hello_zap.js";
 
 const { bootstrap, close } = await connect("wss://app.hanzo.ai/zap", {
@@ -129,11 +131,11 @@ Method ordinals (the interface method `@n`) are the integers you pass to
 
 | Export | Entry | Purpose |
 | --- | --- | --- |
-| `serve(httpServer, opts)` | `@hanzo/zap-web/server` | Attach a ZAP RPC endpoint to a Node `http.Server`. |
-| `connect(url, opts?)` | `@hanzo/zap-web/client` | Open a ZAP RPC WebSocket; returns `{ bootstrap, close }`. |
-| `nodeWsTransport(ws)` / `browserWsTransport(ws)` | `@hanzo/zap-web/transport` | Wrap a `ws`/native WebSocket as a `WsTransport`. |
-| `MintCap<Ctx>` | `@hanzo/zap-web/auth` | The bearer→ctx slot. |
-| `WebRpcError` | `@hanzo/zap-web` | Transport-level RPC failure (rejected upgrade, mid-call close, non-OK status). |
+| `serve(httpServer, opts)` | `@zap-proto/web/server` | Attach a ZAP RPC endpoint to a Node `http.Server`. |
+| `connect(url, opts?)` | `@zap-proto/web/client` | Open a ZAP RPC WebSocket; returns `{ bootstrap, close }`. |
+| `nodeWsTransport(ws)` / `browserWsTransport(ws)` | `@zap-proto/web/transport` | Wrap a `ws`/native WebSocket as a `WsTransport`. |
+| `MintCap<Ctx>` | `@zap-proto/web/auth` | The bearer→ctx slot. |
+| `WebRpcError` | `@zap-proto/web` | Transport-level RPC failure (rejected upgrade, mid-call close, non-OK status). |
 
 ## License
 

@@ -4,8 +4,8 @@
 /**
  * transport.ts — an isomorphic WebSocket transport for ZAP RPC frames.
  *
- * The foundation runtime (@hanzo/zap) frames a call as a single ZAP envelope
- * (envelope.ts buildRequest / buildResponse). Over TCP, @hanzo/zap's ZapClient
+ * The foundation runtime (@zap-proto/zap) frames a call as a single ZAP envelope
+ * (envelope.ts buildRequest / buildResponse). Over TCP, @zap-proto/zap's ZapClient
  * length-prefixes each envelope to recover message boundaries. WebSocket binary
  * frames already give us message boundaries for free, so the framing here is
  * one ZAP envelope = one WS binary message — no extra length prefix.

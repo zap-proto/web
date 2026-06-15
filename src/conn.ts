@@ -5,7 +5,7 @@
  * conn.ts — a transport-agnostic ZAP RPC connection over a {@link WsTransport}.
  *
  * This is the shared core of both serve() and connect(). It mirrors the
- * correlation logic of @hanzo/zap's ZapClient (Node TCP), but rides a duplex
+ * correlation logic of @zap-proto/zap's ZapClient (Node TCP), but rides a duplex
  * WebSocket transport instead of a TCP socket and works in both directions:
  *
  *   - client side: call() ships a request envelope and resolves its Response
@@ -30,7 +30,7 @@ import {
   Status,
   type Call,
   type Response,
-} from "@hanzo/zap";
+} from "@zap-proto/zap";
 import type { WsTransport } from "./transport.js";
 import { WebRpcError } from "./errors.js";
 

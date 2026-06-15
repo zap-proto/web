@@ -2,10 +2,10 @@
 // See the file LICENSE for licensing terms.
 
 /**
- * @hanzo/zap-web — browser-frontend RPC over ZAP.
+ * @zap-proto/web — browser-frontend RPC over ZAP.
  *
  * A drop-in tRPC replacement that speaks native ZAP envelopes over WebSocket
- * binary frames instead of JSON-over-HTTP. Layered on @hanzo/zap (the wire
+ * binary frames instead of JSON-over-HTTP. Layered on @zap-proto/zap (the wire
  * runtime). Service shape comes from .zap schemas via `zapgen --target=ts`, not
  * a Zod/procedure DSL. Binary only — no JSON fallback, no Cap'n Proto.
  *

@@ -41,7 +41,7 @@ export interface ConnectOptions {
  * generated typed wrapper a consumer layers over the raw {@link Conn} call
  * surface — `connect<MyRootCap>(...)` then exposes typed methods on `bootstrap`.
  *
- * On the real @hanzo/zap foundation the bootstrap is the connection's call
+ * On the real @zap-proto/zap foundation the bootstrap is the connection's call
  * surface (method ordinal + ZAP payload), not a Cap'n Proto capability object.
  * The default `RootCap = Conn` gives you raw `bootstrap.call(method, { payload })`;
  * a zapgen-generated client wraps that into named, typed methods.

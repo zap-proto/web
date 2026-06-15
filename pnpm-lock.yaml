@@ -4,13 +4,16 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@zap-proto/zap': link:../ts
+
 importers:
 
   .:
     dependencies:
-      '@hanzo/zap':
-        specifier: link:../zap-ts
-        version: link:../zap-ts
+      '@zap-proto/zap':
+        specifier: link:../ts
+        version: link:../ts
     devDependencies:
       '@types/node':
         specifier: ^22.0.0

@@ -12,7 +12,7 @@ import type { IncomingMessage } from "node:http";
  * footer, BLAKE3 object identity, attenuable/revocable authority) lands in a
  * later version. Until then you can return any object: whatever non-null value
  * you return becomes the `ctx` threaded into your `rootCap(ctx)` factory and
- * carried on every {@link import("@hanzo/zap").Call} as its capability buffer.
+ * carried on every {@link import("@zap-proto/zap").Call} as its capability buffer.
  *
  * Return `null` to reject the connection with HTTP 401 before the WebSocket
  * upgrade completes — no socket is opened for an unauthorized request.
