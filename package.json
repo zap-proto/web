@@ -1,6 +1,6 @@
 {
   "name": "@zap-proto/web",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Browser frontend RPC over ZAP — a drop-in tRPC replacement for Next.js / Remix / SvelteKit. Native ZAP envelopes over WebSocket binary frames; layered on @zap-proto/zap. No Cap'n Proto, no JSON.",
   "license": "MIT",
   "type": "module",
@@ -48,7 +48,7 @@
     "format": "prettier --write src test"
   },
   "dependencies": {
-    "@zap-proto/zap": "^1.1.0"
+    "@zap-proto/zap": "^1.2.0"
   },
   "peerDependencies": {
     "ws": ">=8"
@@ -62,6 +62,7 @@
     "@types/node": "^22.0.0",
     "@types/ws": "^8.5.12",
     "eslint": "^9.0.0",
+    "happy-dom": "^20.10.4",
     "prettier": "^3.3.0",
     "typescript": "^5.9.3",
     "vitest": "^4.1.4",

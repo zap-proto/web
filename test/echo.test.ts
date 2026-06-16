@@ -5,7 +5,8 @@ import { createServer, type Server } from "node:http";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { WebSocket } from "ws";
 import { Status, type Call, type Response } from "@zap-proto/zap";
-import { connect, serve, WebRpcError, type Conn } from "../src/index.js";
+import { connect, WebRpcError, type Conn } from "../src/index.js";
+import { serve } from "../src/server.js";
 import {
   EchoArgs,
   EchoResult,

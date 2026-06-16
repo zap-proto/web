@@ -127,15 +127,32 @@ zapgen --target=ts -single hello.zap   # → hello_zap.ts (views + builders)
 Method ordinals (the interface method `@n`) are the integers you pass to
 `bootstrap.call(method, …)` and match in your `rootCap` dispatch.
 
+## Entry points
+
+The root entry (`@zap-proto/web`) is **browser-safe** — it imports no Node
+built-ins and exposes only the client surface (`connect`, `browserWsTransport`,
+`Conn`, errors). The Node server (`serve`, `nodeWsTransport`, the `MintCap`
+auth slot) reaches `node:module` (`createRequire`) / `node:http` / `node:net`
+and lives behind `@zap-proto/web/server`, so it never enters a browser bundle.
+
+```ts
+// Browser — the client connection.
+import { connect } from "@zap-proto/web/client";
+
+// Node — attach the RPC endpoint to an http.Server.
+import { serve } from "@zap-proto/web/server";
+```
+
 ## API
 
 | Export | Entry | Purpose |
 | --- | --- | --- |
-| `serve(httpServer, opts)` | `@zap-proto/web/server` | Attach a ZAP RPC endpoint to a Node `http.Server`. |
-| `connect(url, opts?)` | `@zap-proto/web/client` | Open a ZAP RPC WebSocket; returns `{ bootstrap, close }`. |
-| `nodeWsTransport(ws)` / `browserWsTransport(ws)` | `@zap-proto/web/transport` | Wrap a `ws`/native WebSocket as a `WsTransport`. |
-| `MintCap<Ctx>` | `@zap-proto/web/auth` | The bearer→ctx slot. |
-| `WebRpcError` | `@zap-proto/web` | Transport-level RPC failure (rejected upgrade, mid-call close, non-OK status). |
+| `connect(url, opts?)` | `@zap-proto/web/client` (or root) | Open a ZAP RPC WebSocket; returns `{ bootstrap, close }`. |
+| `browserWsTransport(ws)` | `@zap-proto/web/transport` (or root) | Wrap a native WebSocket as a `WsTransport`. |
+| `Conn`, `WebRpcError` | `@zap-proto/web` (root, browser-safe) | Duplex RPC connection; transport-level RPC failure. |
+| `serve(httpServer, opts)` | `@zap-proto/web/server` | **Node only.** Attach a ZAP RPC endpoint to a Node `http.Server`. |
+| `nodeWsTransport(ws)` | `@zap-proto/web/server` (or `/transport`) | **Node only.** Wrap a `ws` WebSocket as a `WsTransport`. |
+| `MintCap<Ctx>` | `@zap-proto/web/server` (or `/auth`) | **Node only.** The bearer→ctx slot. |
 
 ## License
 

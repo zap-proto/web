@@ -29,6 +29,12 @@ import { Conn } from "./conn.js";
 import { nodeWsTransport } from "./transport.js";
 import type { MintCap } from "./auth.js";
 
+// `@zap-proto/web/server` is the complete Node surface. Re-export the
+// server-side transport factory and the auth slot so consumers import the whole
+// server API from one sub-path (the root entry is browser-safe and omits these).
+export { nodeWsTransport } from "./transport.js";
+export type { MintCap } from "./auth.js";
+
 /**
  * rootCap produces the per-connection dispatch root for a minted ctx.
  *
