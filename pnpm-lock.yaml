@@ -4,16 +4,13 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@zap-proto/zap': link:../ts
-
 importers:
 
   .:
     dependencies:
       '@zap-proto/zap':
-        specifier: link:../ts
-        version: link:../ts
+        specifier: ^1.1.0
+        version: 1.1.0
     devDependencies:
       '@types/node':
         specifier: ^22.0.0
@@ -262,6 +259,9 @@ packages:
 
   '@vitest/utils@4.1.9':
     resolution: {integrity: sha512-A51o8ymO5PpqlWNnBP9ZHPXDIpuMtTLlGSjN7la4US+LJzoUMyhwjA5QXlm39JexgwHKW4Xjs8Z2d3dLCXOeuA==}
+
+  '@zap-proto/zap@1.1.0':
+    resolution: {integrity: sha512-qJyT6OqHqtUuKZwh91Nl2CWCQ3MJKNHi1cHrha2sYPxuNrILS2Cey9j+c6Gev3KRuTkpfcJx3GPLapbeIzpVEw==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -1029,6 +1029,8 @@ snapshots:
       '@vitest/pretty-format': 4.1.9
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
+
+  '@zap-proto/zap@1.1.0': {}
 
   acorn-jsx@5.3.2(acorn@8.17.0):
     dependencies:

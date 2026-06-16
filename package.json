@@ -48,7 +48,7 @@
     "format": "prettier --write src test"
   },
   "dependencies": {
-    "@zap-proto/zap": "^0.1.0"
+    "@zap-proto/zap": "^1.1.0"
   },
   "peerDependencies": {
     "ws": ">=8"
@@ -72,10 +72,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "pnpm": {
-    "overrides": {
-      "@zap-proto/zap": "link:../ts"
-    }
   }
 }
