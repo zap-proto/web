@@ -35,6 +35,17 @@ import type { MintCap } from "./auth.js";
 export { nodeWsTransport } from "./transport.js";
 export type { MintCap } from "./auth.js";
 
+// httpServe mounts a JSON-over-HTTP face on the SAME ZAP service, dispatching
+// each POST /<service>/<method> through the identical CallHandler serve() uses
+// over WebSocket. The OpenAPI doc emitted by `zapgen --emit=openapi` describes
+// exactly these routes.
+export { httpServe } from "./http.js";
+export type {
+  HttpRoute,
+  HttpServeOptions,
+  HttpServeHandle,
+} from "./http.js";
+
 /**
  * rootCap produces the per-connection dispatch root for a minted ctx.
  *

@@ -1,0 +1,84 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "EchoService",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1/v1"
+    }
+  ],
+  "paths": {
+    "/echo-service/echo": {
+      "post": {
+        "operationId": "echoService.echo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EchoOut"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request — payload failed validation."
+          },
+          "401": {
+            "description": "Unauthorized — missing or invalid credentials."
+          },
+          "403": {
+            "description": "Forbidden — credentials lack the capability."
+          },
+          "404": {
+            "description": "Not found — unknown method."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EchoIn"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EchoIn": {
+        "type": "object",
+        "properties": {
+          "msg": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "msg"
+        ],
+        "additionalProperties": false
+      },
+      "EchoOut": {
+        "type": "object",
+        "properties": {
+          "msg": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "msg"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}
