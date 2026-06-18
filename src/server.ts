@@ -8,8 +8,7 @@
  * Sharing one http.Server is the integration seam: Next.js's
  * `app.getRequestHandler()` and a Remix Node server both run on a plain
  * http.Server, so a single `serve(server, ...)` line adds ZAP RPC alongside the
- * app without a second port. (Same shape as the WebSocket attachments in
- * hanzo/platform's app/platform/server/server.ts.)
+ * app without a second port.
  *
  * Auth runs at the upgrade boundary: mintCap(req) is awaited BEFORE the
  * handshake completes. A null mint writes HTTP 401 and destroys the socket — no
