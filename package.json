@@ -1,6 +1,6 @@
 {
   "name": "@zap-proto/web",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Browser frontend RPC over ZAP — a drop-in tRPC replacement for Next.js / Remix / SvelteKit. Native ZAP envelopes over WebSocket binary frames, plus an optional JSON-over-HTTP face (httpServe) for the OpenAPI 3.1 surface emitted by zapgen. Layered on @zap-proto/zap. No Cap'n Proto.",
   "license": "MIT",
   "type": "module",
