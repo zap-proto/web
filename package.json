@@ -65,7 +65,7 @@
     "eslint": "^9.0.0",
     "happy-dom": "^20.10.4",
     "prettier": "^3.3.0",
-    "typescript": "^5.9.3",
+    "typescript": "7.0.2",
     "vitest": "^4.1.4",
     "ws": "^8.18.0"
   },
